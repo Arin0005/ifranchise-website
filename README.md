@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# iFranchise – Franchise Development Platform
 
-## Getting Started
+Welcome to the official web platform for **iFranchise** – a premium consultancy connecting ambitious lifestyle and service brands with qualified franchise investors across India.
 
-First, run the development server:
+## About the Project
+This platform serves as our digital headquarters. It is engineered to clearly communicate our suite of services (from legal compliance and brand expansion blueprints to investor acquisition) and to serve as a high-conversion lead generation portal for potential franchise partners. We designed this project to reflect our corporate aesthetic: trustworthy, modern, and highly scalable.
+
+## Technology Stack
+To ensure maximum performance, top-tier SEO, and a butter-smooth user experience, this platform is built on a modern, bleeding-edge stack:
+* **Framework:** [Next.js 14](https://nextjs.org/) using the latest App Router architecture.
+* **Core UI:** [React](https://reactjs.org/) and [TypeScript](https://www.typescriptlang.org/) for robust, type-safe functional components.
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/) mapped to our custom brand color palette (`#2D0C57`, `#4B2E83`).
+* **Animations:** [Framer Motion](https://www.framer.com/motion/) for premium scroll-linked transitions, hover interactions, and dynamic layout routing.
+
+## Key Highlights & Features
+1. **Dynamic Scroll Interfaces:** A responsive, floating navbar and dynamic hero sections that react intuitively to user scroll depth.
+2. **Immersive UI/UX:** Fully custom SVG-based motifs, staggered card fade-ins, and marquee logic for our trusted brand partners.
+3. **Application Pipeline:** A structured, multi-input lead generation page (`/apply`) that securely captures high-intent investor profiles.
+4. **Performance Optimized:** All static assets are served using `next/image` with explicit width/height heuristics to avoid Layout Shifts, guaranteeing top-percentile Core Web Vitals.
+5. **Mobile-First Paradigm:** Rigorously tested at standard mobile and tablet breakpoints to ensure zero layout degradation on smaller devices.
+
+## Local Development
+
+Ensure you have Node.js 18+ installed on your system.
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The server will initialize at `http://localhost:3000`. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment Setup
+This repository is completely stripped of default boilerplate and is 100% ready for production deployment onto Vercel.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push your code to a GitHub repository.
+2. Import the project into Vercel.
+3. Vercel will automatically detect the Next.js framework.
+4. Click **Deploy**.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project uses a standard `npm run build` step that outputs a highly optimized static/server chunked build.
