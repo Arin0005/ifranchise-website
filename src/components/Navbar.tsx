@@ -4,8 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiChevronDown, FiMenu, FiX } from "react-icons/fi";
+import { FiChevronDown, FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -55,10 +56,13 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -102,8 +106,8 @@ export default function Navbar() {
               href={item.href}
               className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                 pathname === item.href
-                  ? "text-primary bg-accent"
-                  : "text-dark hover:text-primary hover:bg-accent/60"
+                  ? "text-primary bg-accent dark:text-primary dark:bg-accent"
+                  : "text-dark hover:text-primary hover:bg-accent/60 dark:text-gray-200 dark:hover:text-primary dark:hover:bg-accent/30"
               }`}
             >
               {item.label}
@@ -128,12 +132,12 @@ export default function Navbar() {
                   onMouseLeave={handleMouseLeave}
                   className="absolute top-full left-0 pt-3 min-w-[200px]"
                 >
-                  <div className="bg-white rounded-xl shadow-[0_12px_40px_rgba(45,12,87,0.12)] border border-gray-100 overflow-hidden py-2">
+                  <div className="bg-white dark:bg-gray-900 rounded-xl shadow-[0_12px_40px_rgba(45,12,87,0.12)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-gray-800 overflow-hidden py-2">
                     {item.dropdown.map((sub) => (
                       <Link
                         key={sub.label}
                         href={sub.href}
-                        className="block px-4 py-2 text-sm text-dark hover:bg-accent hover:text-primary transition-colors font-medium"
+                        className="block px-4 py-2 text-sm text-dark dark:text-gray-200 hover:bg-accent hover:text-primary dark:hover:bg-gray-800 transition-colors font-medium"
                       >
                         {sub.label}
                       </Link>
@@ -146,12 +150,25 @@ export default function Navbar() {
         ))}
       </nav>
 
-      <Link
-        href="/apply"
-        className="btn-glow ml-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-secondary transition-all duration-200 hover:-translate-y-0.5 shrink-0"
-      >
-        Apply Now
-      </Link>
+      <div className="flex items-center gap-2 ml-2 shrink-0">
+        <button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="p-2.5 rounded-xl bg-accent text-primary transition-colors hover:bg-lavender dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 h-10 w-10 flex items-center justify-center shrink-0"
+          aria-label="Toggle Dark Mode"
+        >
+          {mounted ? (
+            theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />
+          ) : (
+            <div className="w-[18px] h-[18px]" />
+          )}
+        </button>
+        <Link
+          href="/apply"
+          className="btn-glow bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-secondary transition-all duration-200 hover:-translate-y-0.5"
+        >
+          Apply Now
+        </Link>
+      </div>
     </>
   );
 
@@ -160,14 +177,14 @@ export default function Navbar() {
       <div className="hidden md:block sticky top-0 z-50 h-[73px]">
         <motion.header
           className={`absolute left-0 right-0 flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
-            scrolled ? "top-4 bg-transparent px-4 2xl:px-0" : "top-0 w-full px-8 py-4 bg-white shadow-sm border-b border-gray-100"
+            scrolled ? "top-4 bg-transparent px-4 2xl:px-0" : "top-0 w-full px-8 py-4 bg-white dark:bg-[#121212] shadow-sm border-b border-gray-100 dark:border-gray-800"
           }`}
           initial={false}
         >
           <div
             className={`flex items-center justify-between w-full transition-all duration-500 mx-auto ${
               scrolled
-                ? "max-w-6xl px-6 py-3 nav-floating bg-white/95 shadow-[0_8px_32px_rgba(45,12,87,0.12)] border border-white/60 rounded-2xl"
+                ? "max-w-6xl px-6 py-3 nav-floating bg-white/95 dark:bg-gray-900/95 shadow-[0_8px_32px_rgba(45,12,87,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-white/60 dark:border-gray-700/60 rounded-2xl"
                 : "max-w-7xl"
             }`}
           >
@@ -177,7 +194,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Navbar */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm relative">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#121212] border-b border-gray-100 dark:border-gray-800 shadow-sm relative">
         <div className="flex items-center justify-between px-4 py-3.5">
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-8 h-8 flex items-center justify-center">
@@ -204,7 +221,7 @@ export default function Navbar() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.28, ease: "easeInOut" }}
-              className="absolute top-full left-0 right-0 overflow-hidden border-t border-gray-100 bg-white shadow-xl"
+              className="absolute top-full left-0 right-0 overflow-hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-[#121212] shadow-xl"
             >
               <div className="px-4 pt-6 pb-4 max-h-[85vh] overflow-y-auto">
                 <div className="flex justify-center mb-6">
@@ -216,10 +233,10 @@ export default function Navbar() {
                 <div className="space-y-1">
                   {navItems.map((item) => (
                     <div key={item.label}>
-                      <div className="flex items-center border-b border-gray-50 last:border-none">
+                      <div className="flex items-center border-b border-gray-50 dark:border-gray-800/50 last:border-none">
                         <Link
                           href={item.href}
-                          className="flex-1 py-3 px-3 text-sm font-semibold text-dark hover:text-primary transition-colors"
+                          className="flex-1 py-3 px-3 text-sm font-semibold text-dark dark:text-gray-200 hover:text-primary transition-colors"
                         >
                           {item.label}
                         </Link>
@@ -267,7 +284,21 @@ export default function Navbar() {
                       </AnimatePresence>
                     </div>
                   ))}
-                  <div className="pt-6">
+                  <div className="pt-6 flex flex-col gap-3">
+                    <button
+                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                      className="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-accent text-primary font-semibold transition-colors hover:bg-lavender dark:bg-gray-800 dark:text-gray-200"
+                    >
+                      {mounted ? (
+                        theme === "dark" ? (
+                          <><FiSun size={18} /> Light Mode</>
+                        ) : (
+                          <><FiMoon size={18} /> Dark Mode</>
+                        )
+                      ) : (
+                        <div className="h-5" />
+                      )}
+                    </button>
                     <Link
                       href="/apply"
                       className="block w-full text-center bg-primary text-white text-sm font-semibold px-4 py-3.5 rounded-xl hover:bg-secondary transition-colors shadow-lg shadow-primary/20"

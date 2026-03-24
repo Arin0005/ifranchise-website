@@ -16,8 +16,6 @@ html {
 
 body {
   font-family: var(--font-inter), sans-serif;
-  color: #1A1A1A;
-  background: #FCFAFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

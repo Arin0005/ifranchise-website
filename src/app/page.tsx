@@ -147,8 +147,8 @@ const brands = [
 
 function TrustedBy() {
   return (
-    <SectionWrapper tight className="bg-accent/40 border-y border-primary/5">
-      <p className="text-center text-xs font-bold uppercase tracking-widest text-primary/60 mb-8">
+    <SectionWrapper tight className="bg-accent/40 dark:bg-primary/10 border-y border-primary/5 dark:border-gray-800">
+      <p className="text-center text-xs font-bold uppercase tracking-widest text-primary/60 dark:text-lavender/60 mb-8">
         Trusted by Category-Leading Brands
       </p>
       <div className="overflow-hidden">
@@ -156,7 +156,7 @@ function TrustedBy() {
           {brands.map((brand, i) => (
             <span
               key={`${brand}-${i}`}
-              className="font-display text-lg font-bold text-primary/40 hover:text-primary transition-colors whitespace-nowrap"
+              className="font-display text-lg font-bold text-primary/40 dark:text-lavender/40 hover:text-primary dark:hover:text-lavender transition-colors whitespace-nowrap"
             >
               {brand}
             </span>
@@ -193,8 +193,8 @@ const features = [
 
 function WhyChoose() {
   return (
-    <SectionWrapper id="why" className="relative bg-gradient-to-b from-accent/5 to-accent/20">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none" />
+    <SectionWrapper id="why" className="relative bg-gradient-to-b from-accent/5 to-accent/20 dark:from-[#121212] dark:to-[#1a1a24]">
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] dark:opacity-5 pointer-events-none" />
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -203,13 +203,13 @@ function WhyChoose() {
         className="relative z-10"
       >
         <motion.div variants={fadeUp} className="text-center mb-16">
-          <span className="inline-flex items-center justify-center px-3 py-1 bg-accent text-primary text-xs font-bold uppercase tracking-widest rounded-full mb-4">
+          <span className="inline-flex items-center justify-center px-3 py-1 bg-accent dark:bg-primary/40 text-primary dark:text-lavender text-xs font-bold uppercase tracking-widest rounded-full mb-4">
             Why Partner With Us
           </span>
-          <h2 className="font-display font-bold text-3xl md:text-5xl text-dark">
+          <h2 className="font-display font-bold text-3xl md:text-5xl text-dark dark:text-white">
             Why Choose <span className="text-gradient">iFranchise</span>
           </h2>
-          <p className="text-secondary/80 font-medium mt-5 max-w-xl mx-auto">
+          <p className="text-secondary/80 dark:text-lavender/80 font-medium mt-5 max-w-xl mx-auto">
             From blueprint to expansion — we deliver end-to-end franchise solutions designed for serious growth.
           </p>
         </motion.div>
@@ -219,15 +219,15 @@ function WhyChoose() {
             <motion.div
               key={f.title}
               variants={fadeUp}
-              className="card-hover bg-white border border-accent/60 rounded-2xl p-8 shadow-[0_4px_24px_rgba(45,12,87,0.04)]"
+              className="card-hover bg-white dark:bg-gray-900 border border-accent/60 dark:border-gray-800 rounded-2xl p-8 shadow-[0_4px_24px_rgba(45,12,87,0.04)] dark:shadow-none"
             >
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-white/50 border border-accent/50 flex items-center justify-center mb-6 shadow-sm">
-                <f.icon size={24} className="text-primary" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-white/50 dark:from-gray-800 dark:to-gray-900 border border-accent/50 dark:border-gray-700 flex items-center justify-center mb-6 shadow-sm">
+                <f.icon size={24} className="text-primary dark:text-lavender" />
               </div>
-              <h3 className="font-display font-bold text-dark text-lg mb-3">
+              <h3 className="font-display font-bold text-dark dark:text-white text-lg mb-3">
                 {f.title}
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{f.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -238,17 +238,17 @@ function WhyChoose() {
 
 // ---------- Opportunities ----------
 const sectors = [
-  { name: "Food & Beverage", range: "₹5L – ₹50L", count: "120+ brands", color: "from-orange-50 to-orange-100", border: "border-orange-200" },
-  { name: "Education & EdTech", range: "₹3L – ₹25L", count: "80+ brands", color: "from-blue-50 to-blue-100", border: "border-blue-200" },
-  { name: "Health & Wellness", range: "₹8L – ₹80L", count: "65+ brands", color: "from-green-50 to-green-100", border: "border-green-200" },
-  { name: "Retail & Fashion", range: "₹10L – ₹1Cr", count: "95+ brands", color: "from-pink-50 to-pink-100", border: "border-pink-200" },
-  { name: "Beauty & Grooming", range: "₹5L – ₹40L", count: "70+ brands", color: "from-purple-50 to-purple-100", border: "border-purple-200" },
-  { name: "Technology & IT", range: "₹2L – ₹20L", count: "45+ brands", color: "from-sky-50 to-sky-100", border: "border-sky-200" },
+  { name: "Food & Beverage", range: "₹5L – ₹50L", count: "120+ brands", color: "from-orange-50 to-orange-100 dark:from-orange-950/40 dark:to-orange-900/20", border: "border-orange-200 dark:border-orange-900/50" },
+  { name: "Education & EdTech", range: "₹3L – ₹25L", count: "80+ brands", color: "from-blue-50 to-blue-100 dark:from-blue-950/40 dark:to-blue-900/20", border: "border-blue-200 dark:border-blue-900/50" },
+  { name: "Health & Wellness", range: "₹8L – ₹80L", count: "65+ brands", color: "from-green-50 to-green-100 dark:from-green-950/40 dark:to-green-900/20", border: "border-green-200 dark:border-green-900/50" },
+  { name: "Retail & Fashion", range: "₹10L – ₹1Cr", count: "95+ brands", color: "from-pink-50 to-pink-100 dark:from-pink-950/40 dark:to-pink-900/20", border: "border-pink-200 dark:border-pink-900/50" },
+  { name: "Beauty & Grooming", range: "₹5L – ₹40L", count: "70+ brands", color: "from-purple-50 to-purple-100 dark:from-purple-950/40 dark:to-purple-900/20", border: "border-purple-200 dark:border-purple-900/50" },
+  { name: "Technology & IT", range: "₹2L – ₹20L", count: "45+ brands", color: "from-sky-50 to-sky-100 dark:from-sky-950/40 dark:to-sky-900/20", border: "border-sky-200 dark:border-sky-900/50" },
 ];
 
 function Opportunities() {
   return (
-    <SectionWrapper id="opportunities" className="bg-lavender/20">
+    <SectionWrapper id="opportunities" className="bg-lavender/20 dark:bg-transparent">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -256,13 +256,13 @@ function Opportunities() {
         variants={stagger}
       >
         <motion.div variants={fadeUp} className="text-center mb-14">
-          <span className="inline-flex items-center justify-center px-3 py-1 bg-white text-secondary text-xs font-bold uppercase tracking-widest rounded-full shadow-sm mb-4">
+          <span className="inline-flex items-center justify-center px-3 py-1 bg-white dark:bg-gray-800 text-secondary dark:text-lavender text-xs font-bold uppercase tracking-widest rounded-full shadow-sm mb-4">
             Franchise Categories
           </span>
-          <h2 className="font-display font-bold text-3xl md:text-5xl text-dark">
+          <h2 className="font-display font-bold text-3xl md:text-5xl text-dark dark:text-white">
             Explore <span className="text-gradient">Opportunities</span>
           </h2>
-          <p className="text-gray-500 font-medium mt-5 max-w-xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 font-medium mt-5 max-w-xl mx-auto">
             Browse curated franchise opportunities across high-growth sectors with proven ROI.
           </p>
         </motion.div>
@@ -275,16 +275,16 @@ function Opportunities() {
                 className={`group flex items-center justify-between rounded-2xl p-6 bg-gradient-to-br ${s.color} border ${s.border} shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5`}
               >
                 <div>
-                  <h3 className="font-display font-bold text-dark text-lg mb-1">
+                  <h3 className="font-display font-bold text-dark dark:text-white text-lg mb-1">
                     {s.name}
                   </h3>
-                  <p className="text-gray-600 text-xs font-medium mb-3">{s.count}</p>
-                  <span className="inline-block bg-white text-primary font-bold text-xs px-2.5 py-1 rounded-md shadow-sm">
+                  <p className="text-gray-600 dark:text-gray-400 text-xs font-medium mb-3">{s.count}</p>
+                  <span className="inline-block bg-white dark:bg-gray-800 text-primary dark:text-lavender font-bold text-xs px-2.5 py-1 rounded-md shadow-sm">
                     {s.range}
                   </span>
                 </div>
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
-                  <FiChevronRight size={20} className="text-gray-400 group-hover:text-white transition-colors" />
+                <div className="w-10 h-10 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center shadow-sm group-hover:bg-primary group-hover:dark:bg-lavender group-hover:text-white transition-colors">
+                  <FiChevronRight size={20} className="text-gray-400 group-hover:text-white group-hover:dark:text-primary transition-colors" />
                 </div>
               </Link>
             </motion.div>
@@ -312,7 +312,7 @@ const steps = [
 
 function HowItWorks() {
   return (
-    <SectionWrapper id="how" className="bg-gradient-to-b from-accent/20 to-lavender/10">
+    <SectionWrapper id="how" className="bg-gradient-to-b from-accent/20 to-lavender/10 dark:from-[#121212] dark:to-primary/10">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -320,10 +320,10 @@ function HowItWorks() {
         variants={stagger}
       >
         <motion.div variants={fadeUp} className="text-center mb-16">
-          <span className="inline-flex items-center justify-center px-3 py-1 bg-white border border-primary/10 text-primary text-xs font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">
+          <span className="inline-flex items-center justify-center px-3 py-1 bg-white dark:bg-gray-800 border border-primary/10 dark:border-gray-700 text-primary dark:text-lavender text-xs font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">
             Our Process
           </span>
-          <h2 className="font-display font-bold text-3xl md:text-5xl text-dark">
+          <h2 className="font-display font-bold text-3xl md:text-5xl text-dark dark:text-white">
             How It <span className="text-gradient">Works</span>
           </h2>
         </motion.div>
@@ -335,13 +335,13 @@ function HowItWorks() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 relative z-10">
             {steps.map((step, i) => (
               <motion.div key={step.num} variants={fadeUp} custom={i} className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-2xl bg-white text-primary font-display font-bold text-2xl flex items-center justify-center mb-6 shadow-xl ring-4 ring-accent tilt-hover transition-transform duration-300">
+                <div className="w-20 h-20 rounded-2xl bg-white dark:bg-gray-800 text-primary dark:text-lavender font-display font-bold text-2xl flex items-center justify-center mb-6 shadow-xl ring-4 ring-accent dark:ring-gray-800/50 tilt-hover transition-transform duration-300">
                   {step.num}
                 </div>
-                <h3 className="font-display font-bold text-dark mb-2 text-base">
+                <h3 className="font-display font-bold text-dark dark:text-white mb-2 text-base">
                   {step.title}
                 </h3>
-                <p className="text-gray-500 font-medium text-sm leading-relaxed max-w-[250px] mx-auto">{step.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 font-medium text-sm leading-relaxed max-w-[250px] mx-auto">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -431,7 +431,7 @@ function Testimonials() {
 // ---------- CTA Banner ----------
 function CTABanner() {
   return (
-    <SectionWrapper tight className="bg-accent">
+    <SectionWrapper tight className="bg-accent dark:bg-primary/20">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -441,11 +441,11 @@ function CTABanner() {
       >
         <motion.h2
           variants={fadeUp}
-          className="font-display font-bold text-3xl md:text-4xl text-primary mb-4"
+          className="font-display font-bold text-3xl md:text-4xl text-primary dark:text-lavender mb-4"
         >
           Ready to Franchise Your Brand?
         </motion.h2>
-        <motion.p variants={fadeUp} className="text-secondary/80 font-medium mb-8 max-w-lg mx-auto">
+        <motion.p variants={fadeUp} className="text-secondary/80 dark:text-lavender/80 font-medium mb-8 max-w-lg mx-auto">
           Join 500+ brands that have successfully scaled with iFranchise. Book your free strategy session today.
         </motion.p>
         <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center">
