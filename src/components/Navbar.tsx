@@ -87,7 +87,13 @@ export default function Navbar() {
     <>
       <Link href="/" className="flex items-center gap-3 shrink-0">
         <div className="relative w-10 h-10 flex items-center justify-center">
-          <Image src="/logo.svg" alt="iFranchise Logo" fill className="object-contain" priority />
+          <Image
+            src="/logo.svg"
+            alt="iFranchise Logo"
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
         <span className="font-display font-bold text-xl text-primary tracking-tight">
           i<span className="text-secondary">Franchise</span>
@@ -99,7 +105,10 @@ export default function Navbar() {
           <div
             key={item.label}
             className="relative"
-            onMouseEnter={() => item.dropdown && handleMouseEnter(item.label + (isFloating ? 'float' : 'static'))}
+            onMouseEnter={() =>
+              item.dropdown &&
+              handleMouseEnter(item.label + (isFloating ? "float" : "static"))
+            }
             onMouseLeave={handleMouseLeave}
           >
             <Link
@@ -113,7 +122,13 @@ export default function Navbar() {
               {item.label}
               {item.dropdown && (
                 <motion.span
-                  animate={{ rotate: activeDropdown === (item.label + (isFloating ? 'float' : 'static')) ? 180 : 0 }}
+                  animate={{
+                    rotate:
+                      activeDropdown ===
+                      item.label + (isFloating ? "float" : "static")
+                        ? 180
+                        : 0,
+                  }}
                   transition={{ duration: 0.2 }}
                 >
                   <FiChevronDown size={14} />
@@ -122,36 +137,42 @@ export default function Navbar() {
             </Link>
 
             <AnimatePresence>
-              {item.dropdown && activeDropdown === (item.label + (isFloating ? 'float' : 'static')) && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                  transition={{ duration: 0.18, ease: "easeOut" }}
-                  onMouseEnter={() => handleMouseEnter(item.label + (isFloating ? 'float' : 'static'))}
-                  onMouseLeave={handleMouseLeave}
-                  className="absolute top-full left-0 pt-3 min-w-[200px]"
-                >
-                  <div className="bg-white dark:bg-gray-900 rounded-xl shadow-[0_12px_40px_rgba(45,12,87,0.12)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-gray-800 overflow-hidden py-2">
-                    {item.dropdown.map((sub) => (
-                      <Link
-                        key={sub.label}
-                        href={sub.href}
-                        className="block px-4 py-2 text-sm text-dark dark:text-gray-200 hover:bg-accent hover:text-primary dark:hover:bg-gray-800 transition-colors font-medium"
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
+              {item.dropdown &&
+                activeDropdown ===
+                  item.label + (isFloating ? "float" : "static") && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    onMouseEnter={() =>
+                      handleMouseEnter(
+                        item.label + (isFloating ? "float" : "static"),
+                      )
+                    }
+                    onMouseLeave={handleMouseLeave}
+                    className="absolute top-full left-0 pt-3 min-w-[200px]"
+                  >
+                    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-[0_12px_40px_rgba(45,12,87,0.12)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-gray-800 overflow-hidden py-2">
+                      {item.dropdown.map((sub) => (
+                        <Link
+                          key={sub.label}
+                          href={sub.href}
+                          className="block px-4 py-2 text-sm text-dark dark:text-gray-200 hover:bg-accent hover:text-primary dark:hover:bg-gray-800 transition-colors font-medium"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
             </AnimatePresence>
           </div>
         ))}
       </nav>
 
       <div className="flex items-center gap-2 ml-2 shrink-0">
-        <button
+        {/* <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="p-2.5 rounded-xl bg-accent text-primary transition-colors hover:bg-lavender dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 h-10 w-10 flex items-center justify-center shrink-0"
           aria-label="Toggle Dark Mode"
@@ -161,7 +182,7 @@ export default function Navbar() {
           ) : (
             <div className="w-[18px] h-[18px]" />
           )}
-        </button>
+        </button> */}
         <Link
           href="/apply"
           className="btn-glow bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-secondary transition-all duration-200 hover:-translate-y-0.5"
@@ -177,7 +198,9 @@ export default function Navbar() {
       <div className="hidden md:block sticky top-0 z-50 h-[73px]">
         <motion.header
           className={`absolute left-0 right-0 flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
-            scrolled ? "top-4 bg-transparent px-4 2xl:px-0" : "top-0 w-full px-8 py-4 bg-white dark:bg-[#121212] shadow-sm border-b border-gray-100 dark:border-gray-800"
+            scrolled
+              ? "top-4 bg-transparent px-4 2xl:px-0"
+              : "top-0 w-full px-8 py-4 bg-white dark:bg-[#121212] shadow-sm border-b border-gray-100 dark:border-gray-800"
           }`}
           initial={false}
         >
@@ -198,7 +221,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-4 py-3.5">
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-8 h-8 flex items-center justify-center">
-              <Image src="/logo.svg" alt="iFranchise Logo" fill className="object-contain" />
+              <Image
+                src="/logo.svg"
+                alt="iFranchise Logo"
+                fill
+                className="object-contain"
+              />
             </div>
             <span className="font-display font-bold text-lg text-primary tracking-tight">
               i<span className="text-secondary">Franchise</span>
@@ -226,7 +254,12 @@ export default function Navbar() {
               <div className="px-4 pt-6 pb-4 max-h-[85vh] overflow-y-auto">
                 <div className="flex justify-center mb-6">
                   <div className="relative w-24 h-24">
-                    <Image src="/logo.svg" alt="iFranchise Logo" fill className="object-contain" />
+                    <Image
+                      src="/logo.svg"
+                      alt="iFranchise Logo"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
                 </div>
 
@@ -244,7 +277,9 @@ export default function Navbar() {
                           <button
                             onClick={() =>
                               setMobileDropdown(
-                                mobileDropdown === item.label ? null : item.label
+                                mobileDropdown === item.label
+                                  ? null
+                                  : item.label,
                               )
                             }
                             className="p-3 text-secondary transition-colors"
@@ -285,20 +320,26 @@ export default function Navbar() {
                     </div>
                   ))}
                   <div className="pt-6 flex flex-col gap-3">
-                    <button
-                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                    {/* <button
+                      onClick={() =>
+                        setTheme(theme === "dark" ? "light" : "dark")
+                      }
                       className="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-accent text-primary font-semibold transition-colors hover:bg-lavender dark:bg-gray-800 dark:text-gray-200"
                     >
                       {mounted ? (
                         theme === "dark" ? (
-                          <><FiSun size={18} /> Light Mode</>
+                          <>
+                            <FiSun size={18} /> Light Mode
+                          </>
                         ) : (
-                          <><FiMoon size={18} /> Dark Mode</>
+                          <>
+                            <FiMoon size={18} /> Dark Mode
+                          </>
                         )
                       ) : (
                         <div className="h-5" />
                       )}
-                    </button>
+                    </button> */}
                     <Link
                       href="/apply"
                       className="block w-full text-center bg-primary text-white text-sm font-semibold px-4 py-3.5 rounded-xl hover:bg-secondary transition-colors shadow-lg shadow-primary/20"
